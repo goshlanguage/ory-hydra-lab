@@ -117,7 +117,17 @@ hydra clients list --endpoint http://admin.hydra.localhost
 | my-client        |      | code           | offline_access offline openid |                                | client_credentials               | client_secret_basic        |
 ```
 
-Now let's put our client to work. This repo contains a small go project that leverages the oidc (OpenID connect)
+Now let's put our client to work. This repo contains a small go project that leverages [golang's oauth2 client](https://pkg.go.dev/golang.org/x/oauth2@v0.0.0-20211005180243-6b3c2da341f1/clientcredentials).
+
+If everything is setup correctly, we'll use the `client_credentials` grant from the `auth-code-client` to fetch a JWT token:
+
+```
+go run ./...
+Successfully acquired a token: eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo0NWVhMjk0Yi1mZTFlLTRhYTItYjU2ZS00Y2IxNmIxYWVjMTUifQ.eyJhdWQiOlsiaHR0cDovL3B1YmxpYy5oeWRyYS5sb2NhbGhvc3QiXSwiY2xpZW50X2lkIjoiYXV0aC1jb2RlLWNsaWVudCIsImV4cCI6MTYzNDc0NjA5MywiZXh0Ijp7fSwiaWF0IjoxNjM0NzQyNDkzLCJpc3MiOiJodHRwOi8vcHVibGljLmh5ZHJhLmxvY2FsaG9zdC8iLCJqdGkiOiIyZjg5ZGVlZi00ODBhLTRjNTUtYjI1Ni0zODllNDY5MzE4ZWIiLCJuYmYiOjE2MzQ3NDI0OTMsInNjcCI6W10sInN1YiI6ImF1dGgtY29kZS1jbGllbnQifQ.yAuxucHD016zfEEeJADJFtvUD1yLui3Pg8QtrAQSMnWWoo-ZcY3bMr_n3mOOMb69DMYLm84iEkIljYzyB6EecXMXe4BnK8xua9QRMujt6FxErmz1oghvkYscfHZ11AW1aW6nPyZ64zwepp9dUeLssTOPIWIprkUNgtU1ziNehlTkgnjU0yf_ol-GDyjFY4LtYwPmuB1ROfNYpdLfBcKrN964jQBbKEueSdVSIWQ8VkI4LHYKsfNzNkrQQJl41FoJ9--67hfKdkhxfyMsLHJ_mRmT6XR5Jf1ikGR5uxX8QnEeXKEU7uwmpIO0LVdP4seI4WVmUeWml0ymibs4e6I4N99wNnM8iQ4u8oI1Sk9-9dHfYLzIXG3RAiWbt4sBihEO6QIrsl6lW7Nzud5EzRpQY6ItkFVsI6feM9DILPGUFuqw5ZLprioOudC59A4rKV49tJ4tCpafrXwn5_xRB6SEfb6cp77RyCryfLTOLIvN0qj615wh2rT8EhV4orvbClcoB29VH6_m9bOTud3V1S9qUXenhPDNzZltB9TxQs5FpAkgCmkYH_2A7IGd-JX5L73hv8x1QrUfH2Q8Js9-cRgYidchC4b3pBL0Oj7xvlzeadAiYgJASqo3qpu5Ns0eEyxQPgFZfl8or0cbQZ3rtPAXeeROdUUfKnGIuihae1u9gcU
+```
+
+From here, you can build on scopes and use them in your services to permit/restrict access to resources as is in the case of `hollow-serverservice`:
+https://github.com/metal-toolbox/hollow-serverservice/blob/76700030b46239ccb92a9f68734c58309314856b/pkg/api/v1/router.go#L23-L49
 
 ## Clean Up
 
