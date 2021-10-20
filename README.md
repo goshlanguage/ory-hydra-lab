@@ -135,7 +135,7 @@ This documentation was put together from referencing the following resources:
 
 - [RFC6749](https://datatracker.ietf.org/doc/html/rfc6749)
 - [Oauth.net](https://oauth.net/)
-- [Oauth.com])https://oauth.com/)
+- [Oauth.com](https://oauth.com/)
 - [Auth0.com docs](https://auth0.com/docs)
 - [JWT.io](https://jwt.io)
 
