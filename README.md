@@ -101,7 +101,7 @@ hydra clients create \
     --audience http://public.hydra.localhost/ \
     --id auth-code-client \
     --secret secret \
-    --grant-types client_credentials,authorization_code,refresh_token \
+    --grant-types authorization_code,refresh_token \
     --response-types code,id_token \
     --token-endpoint-auth-method client_secret_post \
     --scope openid,offline
