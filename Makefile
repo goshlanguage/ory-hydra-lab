@@ -3,9 +3,9 @@ up:
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 
 	helm upgrade --install postgres bitnami/postgresql \
-			--set global.postgresql.postgresqlPassword="LOLCHANGEME2021" \
-			--set global.postgresql.postgresqlUsername="hydra" \
-			--set global.postgresql.postgresqlDatabase="hydra"
+			--set global.postgresql.auth.password="LOLCHANGEME2021" \
+			--set global.postgresql.auth.username="hydra" \
+			--set global.postgresql.auth.database="hydra"
 
 	sleep 5
 
@@ -25,7 +25,7 @@ up:
     --set 'maester.enabled=false' \
     --set 'hydra.autoMigrate=true' \
     --set 'hydra.dangerousForceHttp=true' \
-		--set 'hydra.dangerousAllowInsecureRedirectUrls={serve,all}' \
+    --set 'hydra.dangerousAllowInsecureRedirectUrls={serve,all}' \
     --set 'hydra.config.urls.self.issuer=http://public.hydra.localhost/' \
     --set 'hydra.config.urls.login=http://example-idp.localhost/login' \
     --set 'hydra.config.urls.consent=http://example-idp.localhost/consent' \
